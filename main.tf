@@ -143,7 +143,7 @@ resource "local_file" "mobann-key" {
  filename = "mobann-key.pem"  
 }
 
-#Get latest Amazon  Linux 2 AMI
+#Get latest version of Amazon  Linux 2 AMI
 data "aws_ami" "amazon-linux-2" {
  owners = ["amazon"]
  most_recent = true
