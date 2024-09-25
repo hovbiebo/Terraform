@@ -14,3 +14,31 @@ variable "region" {
   description = "Environment name"
   type = string   
  }
+
+ #VPC VAriables 
+ variable "vpc_cidr" {
+description = "CIDR Block for the VPC"
+type = string
+ }
+ variable "public_subnet_az1_cidr" {
+description = "CIDR block for the public subnet in availability zone 1"
+type =   string
+ }
+
+ variable "public_subnet_az2_cidr" {
+description = "CIDR block for the public subnet in availability zone 2"
+type =   string
+ }
+
+variable "private_app_subnet_az1_cidr" {
+description = "CIDR block for the private app subnet in availability zone 1"
+type =   string
+ }
+
+variable "private_app_subnet_az2_cidr" {
+description = "CIDR block for the private app subnet in availability zone 2"
+type =   string
+ }
+
+
+
