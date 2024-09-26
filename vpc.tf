@@ -6,7 +6,7 @@ resource "aws_vpc" "Training_vpc" {
   enable_dns_hostnames    = "false"
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_VPC"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id    = aws_vpc.Training_vpc.id
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_IGW"
   }
 }
 
@@ -29,7 +29,7 @@ resource "aws_subnet" "public_subnet_az1" {
   map_public_ip_on_launch = "false"
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_PubSub1"
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_subnet" "public_subnet_az2" {
   map_public_ip_on_launch = "false"
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_PubSub2"
   }
 }
 
@@ -52,12 +52,12 @@ resource "aws_route_table" "public_route_table" {
   vpc_id       = aws_vpc.Training_vpc.id
 
   route {
-    cidr_block = "10.0.0.0/16"
+    cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.internet_gateway.id
   }
 
   tags       = {
-    Name     = "Training_Main"
+    Name     = "Training_Main_RT"
   }
 }
 
@@ -84,7 +84,7 @@ resource "aws_subnet" "private_app_subnet_az1" {
   map_public_ip_on_launch  = "false"
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_PrivAppSub1"
   }
 }
 
@@ -97,7 +97,7 @@ resource "aws_subnet" "private_app_subnet_az2" {
   map_public_ip_on_launch  = "false"
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_PrivAppSub2"
   }
 }
 
@@ -110,7 +110,7 @@ resource "aws_subnet" "private_data_subnet_az1" {
   map_public_ip_on_launch  = "false"
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_PrivDataSub1"
   }
 }
 
@@ -123,6 +123,6 @@ resource "aws_subnet" "private_data_subnet_az2" {
   map_public_ip_on_launch  = "false"
 
   tags      = {
-    Name    = "Training_Main"
+    Name    = "Training_Main_PrivDataSub2"
   }
 }
