@@ -1,7 +1,7 @@
 # create vpc
 # terraform aws create vpc
 resource "aws_vpc" "Training_vpc" {
-  cidr_block              = "10.0.0.0/16"
+  cidr_block              = var.vpc_cidr
   instance_tenancy        = "default"
   enable_dns_hostnames    = "false"
 
@@ -24,7 +24,7 @@ resource "aws_internet_gateway" "internet_gateway" {
 # terraform aws create subnet
 resource "aws_subnet" "public_subnet_az1" {
   vpc_id                  = aws_vpc.Training_vpc.id
-  cidr_block              = "10.0.1.0/24"
+  cidr_block              = var.public_subnet_az1_cidr
   availability_zone       = "us-east-2a"
   map_public_ip_on_launch = "false"
 
@@ -37,7 +37,7 @@ resource "aws_subnet" "public_subnet_az1" {
 # terraform aws create subnet
 resource "aws_subnet" "public_subnet_az2" {
   vpc_id                  = aws_vpc.Training_vpc.id
-  cidr_block              = "10.0.2.0/24"
+  cidr_block              = var.public_subnet_az2_cidr
   availability_zone       = "us-east-2b"
   map_public_ip_on_launch = "false"
 
@@ -79,7 +79,7 @@ resource "aws_route_table_association" "public_subnet_az2_route_table_associatio
 # terraform aws create subnet
 resource "aws_subnet" "private_app_subnet_az1" {
   vpc_id                   = aws_vpc.Training_vpc.id
-  cidr_block               = "10.0.3.0/24"
+  cidr_block               = var.private_app_subnet_az1_cidr
   availability_zone        = "us-east-2a"
   map_public_ip_on_launch  = "false"
 
@@ -92,7 +92,7 @@ resource "aws_subnet" "private_app_subnet_az1" {
 # terraform aws create subnet
 resource "aws_subnet" "private_app_subnet_az2" {
   vpc_id                   = aws_vpc.Training_vpc.id
-  cidr_block               = "10.0.4.0/24"
+  cidr_block               = var.private_app_subnet_az2_cidr
   availability_zone        = "us-east-2b"
   map_public_ip_on_launch  = "false"
 
