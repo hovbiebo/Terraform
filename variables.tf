@@ -46,8 +46,17 @@ type =   string
  }
 
 
- variable "private_data_subnet_az2_cidr" {
+variable "private_data_subnet_az2_cidr" {
 description = "CIDR block for the private data subnet in availability zone 2"
 type =   string
  }
 
+variable "Availability_Zone1" {
+description = "Availability zone 1"
+type =   string
+ }
+
+ variable "Availability_Zone2" {
+description = "Availability zone 2"
+type =   string
+ }
