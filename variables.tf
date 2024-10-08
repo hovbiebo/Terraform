@@ -60,3 +60,8 @@ type =   string
 description = "Availability zone 2"
 type =   string
  }
+
+ variable "security_groups" {
+   description = "Availability zone 2"
+   type =   string
+ }
